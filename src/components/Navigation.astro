@@ -1,0 +1,16 @@
+---
+const navColor = "white";
+const navWeight = "bold";
+---
+<style define:vars={{navColor, navWeight}}>
+    .nav {
+        color: var(--navColor);
+        font-weight: var(--navWeight);
+    }
+</style>
+
+<div class="nav-links">
+    <a class="nav" href="/">Home</a>
+    <a class="nav" href="/about/">About</a>
+    <a class="nav" href="/blog/">Blog</a>
+</div>

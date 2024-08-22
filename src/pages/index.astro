@@ -1,5 +1,12 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
 const pageTitle = "Home Page";
+
+const navColor = "white";
+const navWeight = "bold";
 ---
 
 <html lang="en">
@@ -9,12 +16,17 @@ const pageTitle = "Home Page";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<style define:vars={{navColor, navWeight}}>
+			.nav {
+				color: var(--navColor);
+				font-weight: var(--navWeight);
+			}	
+		</style>
 	</head>
 	<body>
-		<a href = "/">Home</a>
-        <a href = "/about">About</a>
-		<a href = "/blog">Blog</a>
+		<Header />
 
 		<h1>{pageTitle}</h1>
+		<Footer />
 	</body>
 </html>
