@@ -1,8 +1,7 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+const allPosts = await Astro.glob('./posts/*.md');
 const pageTitle = "My Astro Learning Blog";
 
 const navColor = "white";
@@ -23,21 +22,10 @@ const navWeight = "bold";
 			}
 		</style>
 	</head>
-	<body>
-        <Header />
-
-		<h1>{pageTitle}</h1>
-
-        <p>I'll add more stuff here once I have something to talk about</p>
+	<BaseLayout pageTitle={pageTitle}>
+		<p>I'll add more stuff here once I have something to talk about</p>
         <ul>
-            <li><a href="/posts/post-1/">Post 1</a></li>
-            <li><a href="/posts/post-2/">Post 2</a></li>
-            <li><a href="/posts/post-3/">Post 3</a></li>
+			{allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
         </ul>
-
-		<Footer />
-		<script>
-			import "../scripts/menu.js";
-		</script>
-	</body>
+	</BaseLayout>
 </html>
